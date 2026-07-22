@@ -1,0 +1,530 @@
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f5f6f8;
+  color: #1a1d24;
+}
+
+.fw-dash {
+  min-height: 100vh;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ---------- Title bar ---------- */
+.fw-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fw-titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fw-plate {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #3b5bdb;
+}
+
+.fw-titlebar h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.fw-conn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #dfe3ea;
+  background: #ffffff;
+}
+
+.fw-conn-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9aa1af;
+}
+
+.fw-conn.is-online .fw-conn-dot {
+  background: #16a34a;
+}
+
+.fw-conn.is-offline .fw-conn-dot {
+  background: #dc2626;
+}
+
+/* ---------- Connect row ---------- */
+.fw-connect-row {
+  display: flex;
+  gap: 8px;
+}
+
+#fw-url-input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #dfe3ea;
+  background: #ffffff;
+  color: #1a1d24;
+}
+
+.fw-connect-btn {
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #dfe3ea;
+  background: #ffffff;
+  color: #1a1d24;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.fw-connect-btn:active {
+  background: #eceef2;
+}
+
+/* ---------- Grid ---------- */
+.fw-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.fw-panel {
+  background: #ffffff;
+  border: 1px solid #dfe3ea;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+.fw-panel h2 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+}
+
+.fw-tag {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+.fw-tag.ok {
+  color: #15803d;
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+
+.fw-tag.err {
+  color: #b91c1c;
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+/* ---------- Panel Data Bayi ---------- */
+.fw-readout-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #eef0f3;
+  font-size: 14px;
+}
+
+.fw-readout-row:last-of-type {
+  border-bottom: none;
+}
+
+.fw-readout-value {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.fw-hint {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* ---------- Panel QR Code ---------- */
+.fw-panel-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fw-qr-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #eef0f3;
+  border-radius: 10px;
+  min-height: 200px;
+  min-width: 200px;
+}
+
+.fw-qr-wrap canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Wider screens ---------- */
+@media (min-width: 640px) {
+  .fw-dash {
+    max-width: 720px;
+  }
+
+  .fw-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- App shell / Sidebar ---------- */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  padding: 16px 10px 20px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  background: #ffffff;
+  border-bottom: 1px solid #dfe3ea;
+  padding: 8px;
+  gap: 4px;
+}
+
+.sidebar-logo {
+  display: block;
+  width: 100px;
+  height: 100px;
+  max-width: 644px;
+  max-height: 644px;
+  object-fit: contain;
+  border-radius: 12px;
+  align-items: center;
+}
+
+.sidebar-logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.sidebar-brand-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1d24;
+  line-height: 1.3;
+}
+
+.sidebar-item {
+  flex: 0 0 auto;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sidebar-item.is-active {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #3b5bdb;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.content-section {
+  display: none;
+  padding: 12px;
+}
+
+.content-section.is-active {
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .app-shell {
+    flex-direction: row;
+  }
+
+  .sidebar {
+    flex-direction: column;
+    width: 220px;
+    flex: 0 0 220px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    border-bottom: none;
+    border-right: 1px solid #dfe3ea;
+    overflow-x: visible;
+  }
+
+  .sidebar-item {
+    text-align: left;
+  }
+}
+
+.section-title {
+  font-size: 16px;
+  margin: 4px 0 12px;
+}
+
+/* ---------- Tabel Ortu ---------- */
+.ot-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: #ffffff;
+  border: 1px solid #dfe3ea;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ot-table th,
+.ot-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #eef0f3;
+}
+
+.ot-table th {
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+  background: #fafbfc;
+}
+
+.ot-row-warn td {
+  background: #fffbeb;
+}
+
+.ot-badge-warn {
+  color: #b45309;
+  font-weight: 700;
+}
+
+.ot-loading,
+.ot-empty {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.ot-view-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid #c7d2fe;
+  background: #eef2ff;
+  color: #3b5bdb;
+  cursor: pointer;
+}
+
+.ot-detail-row td {
+  background: #fafbfc;
+  padding: 12px 10px;
+}
+
+.ot-detail-loading {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.ot-balita-block {
+  padding: 8px 0;
+  border-bottom: 1px solid #eef0f3;
+}
+
+.ot-balita-block:last-child {
+  border-bottom: none;
+}
+
+.ot-balita-nama {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 2px;
+}
+
+.ot-balita-sub {
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.ot-balita-catatan {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0 0 8px;
+  font-style: italic;
+}
+
+.ot-hist-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.ot-hist-table th,
+.ot-hist-table td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid #eef0f3;
+}
+
+.ot-hist-table th {
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.ot-hist-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.ot-hist-badge-normal {
+  color: #15803d;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.ot-hist-badge-warn {
+  color: #b45309;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+
+.ot-hist-badge-danger {
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+/* ---------- Grafik ---------- */
+.gc-chart-block {
+  margin-bottom: 20px;
+}
+
+.gc-chart-block h3 {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 8px;
+}
+
+.gc-svg {
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+  border: 1px solid #dfe3ea;
+  border-radius: 8px;
+}
+
+.gc-note,
+.gc-loading,
+.gc-empty {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* ---------- Rekap PDF ---------- */
+.rp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rp-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #dfe3ea;
+  border-radius: 10px;
+}
+
+.rp-nama {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.rp-sub {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 2px 0 0;
+}
+
+.rp-btn {
+  padding: 8px 12px;
+  min-height: 36px;
+}
+
+.rp-loading,
+.rp-empty {
+  color: #6b7280;
+  font-size: 13px;
+}
