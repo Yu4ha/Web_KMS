@@ -16,7 +16,7 @@ root.innerHTML = `
   <div class="app-shell">
     <nav class="sidebar">
       <div class="sidebar-brand">
-        <img src="/tambelang.jpeg" alt="tambelang">
+        <img src="/tambelang.jpeg" class="sidebar-logo" alt="tambelang">
         <span class="sidebar-brand-name">Posyandu Tambelang</span>
       </div>
       <button class="sidebar-item is-active" data-section="alat">Panel Alat</button>
