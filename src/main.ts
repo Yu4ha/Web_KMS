@@ -1,4 +1,3 @@
-import "./style.css";
 import { mountDashboard } from "./dashboard";
 import { mountOrtuTable } from "./ortuTable";
 import { mountGrowthChart } from "./growthChart";
