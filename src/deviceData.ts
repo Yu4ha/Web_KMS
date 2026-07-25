@@ -23,7 +23,6 @@ function initialSnapshot(): DeviceSnapshot {
     timestamp: new Date(),
     bb: 3.8,
     tb: 53.4,
-    gram: 3800,
     level: 0,
     connected: false,
   };
@@ -34,7 +33,6 @@ function toSnapshot(data: ApiStatusResponse, connectedFallback: boolean): Device
     timestamp: new Date(data.timestamp),
     bb: data.bb,
     tb: data.tb,
-    gram: data.gram,
     level: data.level,
     connected: data.connected ?? connectedFallback,
   };
@@ -123,7 +121,6 @@ export class DeviceDataConnection {
         timestamp: new Date(),
         bb: Math.round(this.bbRef * 10) / 10,
         tb: Math.round(this.tbRef * 10) / 10,
-        gram: Math.round(this.bbRef * 1000),
         level: Math.round((this.bbRef / 15) * 100),
         connected: true,
       });
