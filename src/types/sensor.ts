@@ -10,7 +10,6 @@ export interface DeviceSnapshot {
   timestamp: Date;
   bb: number;          // berat badan, kg
   tb: number;           // tinggi badan, cm
-  gram: number | null;  // berat mentah dari load cell (opsional, buat debug/UI tambahan)
   level: number | null; // persentase 0-100 terhadap kalibrasi load cell (opsional)
   connected: boolean;   // status koneksi ke relay server
 }

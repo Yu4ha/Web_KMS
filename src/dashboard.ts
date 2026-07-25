@@ -94,7 +94,6 @@ export function mountDashboard(root: HTMLElement, connection: DeviceDataConnecti
 
     root.querySelector("#fw-bb")!.textContent = fmt(snap.bb, 1, "kg");
     root.querySelector("#fw-tb")!.textContent = fmt(snap.tb, 1, "cm");
-    root.querySelector("#fw-gram")!.textContent = fmt(snap.gram, 0, "g");
 
     refreshQrIfDue(snap);
   }
