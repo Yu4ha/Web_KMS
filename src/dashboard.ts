@@ -45,10 +45,6 @@ export function mountDashboard(root: HTMLElement, connection: DeviceDataConnecti
             <span class="fw-readout-label">Tinggi badan</span>
             <span id="fw-tb" class="fw-readout-value">-</span>
           </div>
-          <div class="fw-readout-row">
-            <span class="fw-readout-label">Berat mentah</span>
-            <span id="fw-gram" class="fw-readout-value">-</span>
-          </div>
           <p class="fw-hint">Scan QR code di app KMS untuk melihat status gizi lengkap.</p>
         </section>
 
