@@ -103,6 +103,8 @@ export interface RekapBulananRow {
   sudahDiukur: boolean;
   bb: number | null;
   tb: number | null;
+  status: string | null;
+  cls: "normal" | "warn" | "danger" | null;
   tglDiukur: string | null;
 }
 
