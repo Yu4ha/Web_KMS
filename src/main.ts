@@ -17,7 +17,7 @@ root.innerHTML = `
     <nav class="sidebar">
       <div class="sidebar-brand">
         <div class="sidebar-mark">
-          <img src="/new-Photoroom.png" class="sidebar-logo" alt="Posyandu Tambelang">
+          <img src="/logo-sakia.png" class="sidebar-logo" alt="Posyandu Tambelang">
         </div>
         <div class="sidebar-brand-text">
           <span class="sidebar-brand-name">SAKIA</span>
