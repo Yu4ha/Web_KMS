@@ -3,7 +3,7 @@
 // plus chart ringkasan (sudah/belum diukur, dan breakdown status gizi).
 // Kader pilih bulan lewat <input type="month">, default bulan berjalan.
 
-import { getRekapBulanan, type RekapBulananRow } from "./kaderApi";
+import { getRekapBulanan, downloadRekapBulananReport, type RekapBulananRow } from "./kaderApi";
 
 const CHART_WIDTH = 560;
 const BAR_HEIGHT = 28;
@@ -141,7 +141,9 @@ export async function mountRekapBulanan(root: HTMLElement) {
           <input type="checkbox" id="rb-filter" ${hanyaBelum ? "checked" : ""} />
           Tampilkan yang belum diukur saja
         </label>
+        <button class="fw-connect-btn" id="rb-download" type="button">Unduh Laporan PDF</button>
       </div>
+      <p id="rb-download-err" class="bp-err"></p>
       <div id="rb-summary" class="rb-summary"></div>
       <div id="rb-charts-wrap"></div>
       <div id="rb-table-wrap"><p class="rp-loading">Memuat data...</p></div>
@@ -149,6 +151,8 @@ export async function mountRekapBulanan(root: HTMLElement) {
 
     const bulanInput = root.querySelector<HTMLInputElement>("#rb-bulan")!;
     const filterInput = root.querySelector<HTMLInputElement>("#rb-filter")!;
+    const downloadBtn = root.querySelector<HTMLButtonElement>("#rb-download")!;
+    const downloadErrEl = root.querySelector<HTMLParagraphElement>("#rb-download-err")!;
     const summaryEl = root.querySelector<HTMLDivElement>("#rb-summary")!;
     const chartsWrap = root.querySelector<HTMLDivElement>("#rb-charts-wrap")!;
     const tableWrap = root.querySelector<HTMLDivElement>("#rb-table-wrap")!;
@@ -160,6 +164,20 @@ export async function mountRekapBulanan(root: HTMLElement) {
     filterInput.addEventListener("change", () => {
       hanyaBelum = filterInput.checked;
       render();
+    });
+    downloadBtn.addEventListener("click", async () => {
+      downloadErrEl.textContent = "";
+      downloadBtn.disabled = true;
+      const original = downloadBtn.textContent;
+      downloadBtn.textContent = "Membuat PDF...";
+      try {
+        await downloadRekapBulananReport(tahunBulan);
+      } catch (err) {
+        downloadErrEl.textContent = err instanceof Error ? err.message : "Gagal membuat PDF.";
+      } finally {
+        downloadBtn.disabled = false;
+        downloadBtn.textContent = original;
+      }
     });
 
     try {

@@ -123,3 +123,23 @@ export async function getRekapBulanan(tahunBulan?: string): Promise<RekapBulanan
   });
   return handle<RekapBulanan>(res);
 }
+
+export async function downloadRekapBulananReport(tahunBulan: string): Promise<void> {
+  const res = await fetch(
+    `${requireBaseUrl()}/api/kader/rekap-bulanan/report?tahunBulan=${encodeURIComponent(tahunBulan)}`,
+    { headers: authHeaders() }
+  );
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.error || `HTTP ${res.status}`);
+  }
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `rekap-bulanan-${tahunBulan}.pdf`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
