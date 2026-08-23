@@ -83,3 +83,31 @@ export async function savePengukuran(
   });
   return handle<Pengukuran>(res);
 }
+
+export interface RekapBulananRow {
+  balitaId: number;
+  namaBayi: string;
+  jk: "L" | "P";
+  namaOrtu: string;
+  username: string;
+  sudahDiukur: boolean;
+  bb: number | null;
+  tb: number | null;
+  tglDiukur: string | null;
+}
+
+export interface RekapBulanan {
+  tahunBulan: string;
+  totalBalita: number;
+  sudahDiukur: number;
+  belumDiukur: number;
+  rows: RekapBulananRow[];
+}
+
+export async function getRekapBulanan(tahunBulan?: string): Promise<RekapBulanan> {
+  const qs = tahunBulan ? `?tahunBulan=${encodeURIComponent(tahunBulan)}` : "";
+  const res = await fetch(`${requireBaseUrl()}/api/kader/rekap-bulanan${qs}`, {
+    headers: authHeaders(),
+  });
+  return handle<RekapBulanan>(res);
+}

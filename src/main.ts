@@ -2,9 +2,10 @@ import { mountDashboard } from "./dashboard";
 import { mountOrtuTable } from "./ortuTable";
 import { mountGrowthChart } from "./growthChart";
 import { mountReportPanel } from "./reportPanel";
+import { mountRekapBulanan } from "./rekapBulanan";
 import { DeviceDataConnection, type DeviceMode } from "./deviceData";
 
-type SectionKey = "alat" | "ortu" | "grafik" | "rekap";
+type SectionKey = "alat" | "ortu" | "grafik" | "rekap" | "rekap-bulanan";
 
 const root = document.querySelector<HTMLDivElement>("#app");
 if (!root) {
@@ -21,12 +22,14 @@ root.innerHTML = `
       <button class="sidebar-item is-active" data-section="alat">Panel Alat</button>
       <button class="sidebar-item" data-section="ortu">Data Ortu</button>
       <button class="sidebar-item" data-section="grafik">Grafik Pertumbuhan</button>
+      <button class="sidebar-item" data-section="rekap-bulanan">Rekap Bulanan</button>
       <button class="sidebar-item" data-section="rekap">Rekap PDF</button>
     </nav>
     <main class="content">
       <section id="section-alat" class="content-section is-active"></section>
       <section id="section-ortu" class="content-section"></section>
       <section id="section-grafik" class="content-section"></section>
+      <section id="section-rekap-bulanan" class="content-section"></section>
       <section id="section-rekap" class="content-section"></section>
     </main>
   </div>
@@ -37,6 +40,7 @@ const sections: Record<SectionKey, HTMLElement> = {
   alat: root.querySelector("#section-alat")!,
   ortu: root.querySelector("#section-ortu")!,
   grafik: root.querySelector("#section-grafik")!,
+  "rekap-bulanan": root.querySelector("#section-rekap-bulanan")!,
   rekap: root.querySelector("#section-rekap")!,
 };
 
@@ -49,7 +53,7 @@ const connection = new DeviceDataConnection(mode, DEFAULT_RELAY_URL);
 mountDashboard(sections.alat, connection, mode);
 connection.start();
 
-// 3 section lain di-refetch tiap kali dibuka (bukan sekali di awal), soalnya
+// Section lain di-refetch tiap kali dibuka (bukan sekali di awal), soalnya
 // datanya bisa berubah sejak terakhir kader buka tab itu.
 function activate(key: SectionKey) {
   navButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.section === key));
@@ -59,6 +63,7 @@ function activate(key: SectionKey) {
 
   if (key === "ortu") mountOrtuTable(sections.ortu);
   if (key === "grafik") mountGrowthChart(sections.grafik);
+  if (key === "rekap-bulanan") mountRekapBulanan(sections["rekap-bulanan"]);
   if (key === "rekap") mountReportPanel(sections.rekap);
 }
 
