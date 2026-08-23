@@ -16,14 +16,30 @@ root.innerHTML = `
   <div class="app-shell">
     <nav class="sidebar">
       <div class="sidebar-brand">
-        <img src="/tambelang.jpeg" class="sidebar-logo" alt="tambelang">
-        <span class="sidebar-brand-name">Posyandu Tambelang</span>
+        <div class="sidebar-mark">
+          <img src="/tambelang.jpeg" class="sidebar-logo" alt="Posyandu Tambelang">
+        </div>
+        <div class="sidebar-brand-text">
+          <span class="sidebar-brand-name">SAKIA</span>
+          <span class="sidebar-brand-tagline">Sahabat Kesehatan Ibu &amp; Anak</span>
+        </div>
       </div>
-      <button class="sidebar-item is-active" data-section="alat">Panel Alat</button>
-      <button class="sidebar-item" data-section="ortu">Data Ortu</button>
-      <button class="sidebar-item" data-section="grafik">Grafik Pertumbuhan</button>
-      <button class="sidebar-item" data-section="rekap-bulanan">Rekap Bulanan</button>
-      <button class="sidebar-item" data-section="rekap">Rekap PDF</button>
+      <button class="sidebar-item is-active" data-section="alat">
+        <span class="sidebar-item-label">Panel Alat</span>
+      </button>
+      <button class="sidebar-item" data-section="ortu">
+        <span class="sidebar-item-label">Data Ortu</span>
+      </button>
+      <button class="sidebar-item" data-section="grafik">
+        <span class="sidebar-item-label">Grafik Pertumbuhan</span>
+      </button>
+      <button class="sidebar-item" data-section="rekap-bulanan">
+        <span class="sidebar-item-label">Rekap Bulanan</span>
+      </button>
+      <button class="sidebar-item" data-section="rekap">
+        <span class="sidebar-item-label">Rekap PDF</span>
+      </button>
+      <div class="sidebar-footer">Posyandu Tambelang</div>
     </nav>
     <main class="content">
       <section id="section-alat" class="content-section is-active"></section>
